@@ -9,11 +9,12 @@ import lombok.Data;
 @Data
 @Embeddable
 public class BelongingPK {
-    @ManyToOne
-    @JoinColumn(name = "game_id")
-    private Game game;
 
     @ManyToOne
     @JoinColumn(name = "game_list_id")
     private GameList gameList;
+
+    @ManyToOne
+    @JoinColumn(name = "game_id")
+    private Game game;
 }
