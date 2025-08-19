@@ -23,6 +23,7 @@ public class Game {
     private Double score;
     private String imgUrl;
 
+    // tipo texto no banco de dados, sem a anotação 255 caracteres por padrão(String)
     @Column(columnDefinition = "TEXT")
     private String shortDescription;
 
