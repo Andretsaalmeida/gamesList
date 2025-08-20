@@ -1,6 +1,5 @@
 package com.andretsaalmeida.gamelist.entities;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
