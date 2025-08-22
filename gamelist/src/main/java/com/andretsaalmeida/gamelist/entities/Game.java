@@ -1,5 +1,6 @@
 package com.andretsaalmeida.gamelist.entities;
 
+import com.andretsaalmeida.gamelist.projections.GameMinProjection;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,4 +30,5 @@ public class Game {
 
     @Column(columnDefinition = "TEXT")
     private String longDescription;
+
 }

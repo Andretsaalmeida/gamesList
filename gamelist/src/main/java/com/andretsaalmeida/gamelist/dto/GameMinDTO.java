@@ -2,7 +2,9 @@ package com.andretsaalmeida.gamelist.dto;
 
 import com.andretsaalmeida.gamelist.entities.Game;
 
+import com.andretsaalmeida.gamelist.projections.GameMinProjection;
 import lombok.Value;
+
 
 @Value
 public class GameMinDTO {
@@ -22,10 +24,32 @@ public class GameMinDTO {
         this.score = entity.getScore();
     }
 
-    public static Object fromEntity(Game game) {
+    public GameMinDTO(Long id, String title, Integer year, String imgUrl, String shortDescription, Double score) {
+        this.id = id;
+        this.title = title;
+        this.year = year;
+        this.imgUrl = imgUrl;
+        this.shortDescription = shortDescription;
+        this.score = score;
+    }
+
+    public static GameMinDTO fromEntity(Game game) {
         if (game == null) {
             return null;
         }
         return new GameMinDTO(game);
+    }
+
+    public static GameMinDTO fromProjection(GameMinProjection gameMinProjection) {
+        if (gameMinProjection == null) {
+            return null;
+        }
+        return new GameMinDTO(
+                gameMinProjection.getId(),
+                gameMinProjection.getTitle(),
+                gameMinProjection.getYear(),
+                gameMinProjection.getImgUrl(),
+                gameMinProjection.getShortDescription(),
+                null);
     }
 }
