@@ -47,7 +47,7 @@ public class GameMinDTO {
         return new GameMinDTO(
                 gameMinProjection.getId(),
                 gameMinProjection.getTitle(),
-                gameMinProjection.getYear(),
+                gameMinProjection.getGameYear(),
                 gameMinProjection.getImgUrl(),
                 gameMinProjection.getShortDescription(),
                 null);
