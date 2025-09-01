@@ -80,5 +80,32 @@
 			</plugin>
 		</plugins>
 	</build>
-
+		<profiles>
+			<profile>
+				<id>production</id>
+				<build>
+					<plugins>
+						<!-- Opcional: Você pode querer desativar testes neste perfil, embora o Railway já use -DskipTests -->
+						<!--
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>${maven-surefire-plugin.version}</version>
+                            <configuration>
+                                <skipTests>true</skipTests>
+                            </configuration>
+                        </plugin>
+                        -->
+						<!-- Outras configurações específicas de produção podem ir aqui -->
+					</plugins>
+				</build>
+				<properties>
+					<!-- Opcional: Propriedades específicas para produção -->
+					<!-- <spring.profiles.active>prod</spring.profiles.active> -->
+				</properties>
+				<dependencies>
+					<!-- Opcional: Dependências que só devem existir em produção, ou serem excluídas -->
+				</dependencies>
+			</profile>
+		</profiles>
 </project>
