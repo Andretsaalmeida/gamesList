@@ -1,9 +1,13 @@
 package com.andretsaalmeida.gamelist.dto;
 
 import com.andretsaalmeida.gamelist.entities.Game;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Value;
+import org.springframework.beans.BeanUtils;
 
-@Value
+@Data
+@NoArgsConstructor
 public class GameDTO {
 
     Long id;
@@ -17,15 +21,7 @@ public class GameDTO {
     String longDescription;
 
     public GameDTO(Game entity) {
-        this.id = entity.getId();
-        this.title = entity.getTitle();
-        this.year = entity.getYear();
-        this.genre = entity.getGenre();
-        this.platforms = entity.getPlatforms();
-        this.score = entity.getScore();
-        this.imgUrl = entity.getImgUrl();
-        this.shortDescription = entity.getShortDescription();
-        this.longDescription = entity.getLongDescription();
+        BeanUtils.copyProperties(entity, this);
     }
 
     public static GameDTO fromEntity(Game game) {
@@ -34,4 +30,6 @@ public class GameDTO {
         }
         return new GameDTO(game);
     }
+
+
 }
