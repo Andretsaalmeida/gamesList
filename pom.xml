@@ -82,7 +82,7 @@
 	</build>
 		<profiles>
 			<profile>
-				<id>production</id>
+				<id>prod</id>
 				<build>
 					<plugins>
 						<!-- Opcional: Você pode querer desativar testes neste perfil, embora o Railway já use -DskipTests -->
