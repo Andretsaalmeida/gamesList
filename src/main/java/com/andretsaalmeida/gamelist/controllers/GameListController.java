@@ -2,14 +2,11 @@ package com.andretsaalmeida.gamelist.controllers;
 
 import com.andretsaalmeida.gamelist.dto.GameListDTO;
 import com.andretsaalmeida.gamelist.dto.GameMinDTO;
+import com.andretsaalmeida.gamelist.dto.ReplacementDTO;
 import com.andretsaalmeida.gamelist.serivces.GameListService;
 import com.andretsaalmeida.gamelist.serivces.GameService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -26,8 +23,7 @@ public class GameListController {
 
     @GetMapping(value = "/{id}")
     public GameListDTO findById(@PathVariable Long id) {
-        GameListDTO result = gameListService.findById(id);
-        return result;
+        return gameListService.findById(id);
     }
 
     @GetMapping
@@ -37,8 +33,12 @@ public class GameListController {
 
     @GetMapping("/{listId}/games")
     public List<GameMinDTO> findGames(@PathVariable Long listId) {
-        List<GameMinDTO> result = gameService.findByGamesList(listId);
-        return result;
+        return gameService.findByGamesList(listId);
+    }
+
+    @PostMapping(value = "/{listId}/replacement")
+    public void move(@PathVariable Long listId, @RequestBody ReplacementDTO body) {
+        gameListService.move(listId, body.sourceIndex(), body.destinationIndex());
     }
 
 }

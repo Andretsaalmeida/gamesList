@@ -24,8 +24,7 @@ public class GameService {
         // This method should return a GameDTO object based on the provided ID.
         // For now, we will return a new GameDTO with default values.
         Game game = gameRepository.findById(listId).get(); // Assuming you have a method to find a game by ID
-        GameDTO gameDTO = GameDTO.fromEntity(game);
-        return gameDTO;
+        return GameDTO.fromEntity(game);
     }
 
     @Transactional

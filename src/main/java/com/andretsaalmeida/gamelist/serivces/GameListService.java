@@ -1,12 +1,10 @@
 package com.andretsaalmeida.gamelist.serivces;
 
 import com.andretsaalmeida.gamelist.dto.GameListDTO;
-import com.andretsaalmeida.gamelist.dto.GameMinDTO;
-import com.andretsaalmeida.gamelist.entities.Game;
 import com.andretsaalmeida.gamelist.entities.GameList;
+import com.andretsaalmeida.gamelist.projections.GameMinProjection;
 import com.andretsaalmeida.gamelist.repositories.GameListRepository;
 import com.andretsaalmeida.gamelist.repositories.GameRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,4 +42,19 @@ public class GameListService {
         GameList result = gameListRepository.findById(id).orElseThrow();
         return GameListDTO.fromEntity(result);
     }
+
+    @Transactional
+    public void move(Long gameListId, int sourceIndex, int destinationIndex) {
+        List<GameMinProjection> list = gameRepository.searchByList(gameListId);
+        GameMinProjection obj = list.remove(sourceIndex);
+        list.add(destinationIndex, obj);
+
+        int min = Math.min(sourceIndex, destinationIndex);
+        int max = Math.max(sourceIndex, destinationIndex);
+
+        for (int i = min; i <= max; i++) {
+            gameListRepository.updateBelongingPosition(gameListId, list.get(i).getId(), i);
+        }
+    }
+
 }

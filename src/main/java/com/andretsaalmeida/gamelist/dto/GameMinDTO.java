@@ -1,36 +1,26 @@
 package com.andretsaalmeida.gamelist.dto;
 
 import com.andretsaalmeida.gamelist.entities.Game;
-
 import com.andretsaalmeida.gamelist.projections.GameMinProjection;
-import lombok.Value;
 
-
-@Value
-public class GameMinDTO {
-    Long id;
-    String title;
-    Integer year;
-    String imgUrl;
-    String shortDescription;
-    Double score;
+public record GameMinDTO(
+        Long id,
+        String title,
+        Integer year,
+        String imgUrl,
+        String shortDescription,
+        Double score
+) {
 
     public GameMinDTO(Game entity) {
-        this.id = entity.getId();
-        this.title = entity.getTitle();
-        this.year = entity.getYear();
-        this.imgUrl = entity.getImgUrl();
-        this.shortDescription = entity.getShortDescription();
-        this.score = entity.getScore();
-    }
-
-    public GameMinDTO(Long id, String title, Integer year, String imgUrl, String shortDescription, Double score) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.imgUrl = imgUrl;
-        this.shortDescription = shortDescription;
-        this.score = score;
+        this(
+                entity.getId(),
+                entity.getTitle(),
+                entity.getYear(),
+                entity.getImgUrl(),
+                entity.getShortDescription(),
+                entity.getScore()
+        );
     }
 
     public static GameMinDTO fromEntity(Game game) {
@@ -50,6 +40,7 @@ public class GameMinDTO {
                 gameMinProjection.getGameYear(),
                 gameMinProjection.getImgUrl(),
                 gameMinProjection.getShortDescription(),
-                null);
+                null
+        );
     }
 }

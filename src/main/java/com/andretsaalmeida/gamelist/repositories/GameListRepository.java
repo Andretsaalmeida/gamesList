@@ -2,13 +2,19 @@ package com.andretsaalmeida.gamelist.repositories;
 
 import com.andretsaalmeida.gamelist.entities.GameList;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface GameListRepository extends JpaRepository<GameList, Long> {
-
-//    // Custom query to find all game lists with their games
-//    @Query("SELECT gl FROM GameList gl JOIN FETCH gl.games")
-//    List<GameList> findAllWithGames();
-//
-//    // Custom query to find a game list by its name
-//    Optional<GameList> findByName(String name);
+    @Modifying
+    @Transactional
+    @Query("UPDATE Belonging b " +
+            "SET b.position = :newPosition " +
+            "WHERE b.id.gameList.id = :gameListId AND b.id.game.id = :gameId")
+    void updateBelongingPosition(
+            @Param("gameListId") Long gameListId,
+            @Param("gameId") Long gameId,
+            @Param("newPosition") int newPosition);
 }
