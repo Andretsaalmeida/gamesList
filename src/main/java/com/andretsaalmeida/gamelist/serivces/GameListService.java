@@ -30,11 +30,8 @@ public class GameListService {
     public List<GameListDTO> findAll() {
         List<GameList> result = gameListRepository.findAll();
         return result.stream()
-                .map(GameListDTO::fromEntity) // Assuming you have a static method fromEntity in GameMinDTO
-                .toList(); // Collect the results into a List<GameMinDTO>
-
-        //return result.stream().map(GameListDTO::new).toList();
-
+                .map(GameListDTO::fromEntity)
+                .toList();
     }
 
     @Transactional(readOnly = true)

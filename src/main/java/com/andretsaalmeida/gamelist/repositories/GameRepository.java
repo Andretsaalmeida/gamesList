@@ -1,6 +1,5 @@
 package com.andretsaalmeida.gamelist.repositories;
 
-
 import com.andretsaalmeida.gamelist.entities.Game;
 import com.andretsaalmeida.gamelist.projections.GameMinProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
