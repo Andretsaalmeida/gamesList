@@ -1,7 +1,10 @@
-# Compiled class file
+HELP.md
+!.mvn/wrapper/maven-wrapper.jar
+
+# Compiled class files
 *.class
 
-# Log file
+# Log files
 *.log
 
 # BlueJ files
@@ -11,11 +14,18 @@
 .mtj.tmp/
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
 
+# VS Code (caso alguém use no mesmo projeto)
+.vscode/
+
+# Eclipse (caso alguém use)
+.settings/
+.project
+.classpath
 
 # Package Files #
 *.jar
@@ -26,6 +36,21 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# OS generated files #
+.DS_Store
+Thumbs.db
+
+# Maven target directory
+/target/
+
+# Gradle build directory
+/build/
+
+# virtual machine crash logs
 hs_err_pid*
 replay_pid*
+
+# Logs and temp
+*.out
+*.tmp
+
