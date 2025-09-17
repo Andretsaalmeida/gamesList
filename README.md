@@ -45,13 +45,19 @@ A aplicação segue uma arquitetura em camadas, facilitando a manutenção e esc
 - **JUnit 5**: Framework para testes unitários.
 
 ## 🚀 Como Executar o Projeto
+### 1️⃣ Pré-requisitos
+- JDK 17 ou superior
+- Maven 3.8+
+- Docker e Docker Compose (para execução do banco local)
 
-### Pré-requisitos
+### 2️⃣ Execução Local com Docker Compose
+1. Certifique-se de ter o arquivo [`docker-compose.yml`](docker-compose.yml) na raiz do projeto.
+2. Suba os containers:
 
-- JDK 17 ou superior.
-- Maven 3.8.1 ou superior.
-
-### Passos para execução
+```bash
+docker-compose up -d
+```
+#### 3️⃣ Clone e compile o projeto:
 
 1. Clone o repositório:
 
@@ -89,7 +95,7 @@ Scripts SQL para criação e popularção do banco de dados estão localizados e
 
 Uma coleção pronta está disponível em:
 
-📁 [GamesList.postman_collection.json](./GamesList.postman_collection.json)
+📁 [GamesList.postman_collection.json](/GamesList.postman_collection.json)
 
 ## 📂 Estrutura do Projeto
 
@@ -101,6 +107,7 @@ gamesList/
 ├── system.properties
 ├── GamesList.postman_collection.json
 ├── .gitignore
+├── docker-compose.yml
 ├── src
 │   ├── main
 │   │   ├── java/com/andretsaalmeida/gamelist
