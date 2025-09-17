@@ -57,7 +57,7 @@ A aplicação segue uma arquitetura em camadas, facilitando a manutenção e esc
 ```bash
 docker-compose up -d
 ```
-#### 3️⃣ Clone e compile o projeto:
+### 3️⃣ Clone e compile o projeto:
 
 1. Clone o repositório:
 
